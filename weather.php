@@ -1,8 +1,8 @@
- <!DOCTYPE html>
- <html>
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="UTF-8">
-<title> <?php
+  <meta charset="UTF-8">
+  <title> <?php
 $input=$_GET['q'];
 $place=filter_var($input,FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $key = rtrim(file_get_contents('../weatherkey', true));
@@ -33,7 +33,6 @@ echo $output;
 <?php 
 echo $output;
 echo "<p><br>$result<br><br><p>";
-#echo "x".$url."x";
 ?>
 </body>
  </html> 
