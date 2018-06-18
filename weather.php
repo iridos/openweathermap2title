@@ -6,18 +6,18 @@
 $input=$_GET['q'];
 $place=filter_var($input,FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $key = rtrim(file_get_contents('../weatherkey', true));
-$url = "http://api.openweathermap.org/data/2.5/weather?q=$place&appid=".$key;
+$url = "http://api.openweathermap.org/data/2.5/weather?q=$place&appid=";
 
 if(preg_match('/([0-9.]+),([0-9.]+)/',$input,$matches)){
 	$lat=$matches[1]; 
 	$lon=$matches[2];
-	$url = "http://api.openweathermap.org/data/2.5/weather?lon=$lon&lat=$lat&appid=".$key;
-
+	$url = "http://api.openweathermap.org/data/2.5/weather?lon=$lon&lat=$lat&appid=";
 }
+
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_URL, $url.$key);
 $result = curl_exec($ch);
 curl_close($ch);
 $obj = json_decode($result);
@@ -39,6 +39,7 @@ echo $output;
 </head> <body>
 <?php 
 echo $output;
+echo "<p>Data from: $url";
 echo "<p><br>$result<br><br><p>";
 ?>
 </body>
