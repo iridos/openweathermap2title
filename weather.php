@@ -31,7 +31,7 @@ $farenheit=$celsius*9/5+32;
 $output.=sprintf(". Temperature %.1f°C/%.0f°F (",$celsius,$farenheit);
 $output.=sprintf("%.1f to %.1f°C) ",(-273.15+$obj->main->temp_min),(-273.15+$obj->main->temp_max));
 $output.="Wind: ".round(1.609344*$obj->wind);
-$output.="km/h Humidity:".$obj->main->humidity."% pressure at sea level:";
+$output.="km/h Humidity: ".$obj->main->humidity."% Pressure at sea level: ";
 $output.=$obj->main->pressure."hPa Visibility: ".($obj->visibility/1000)."km ";
 #echo "Sunrise: ";
 if(!(isset($obj->main->temp))){$output="Sorry, '$input' not found".$deb;};
