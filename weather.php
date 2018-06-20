@@ -26,8 +26,10 @@ $output = $deb."$obj->name,".$obj->sys->country.
 	"(lat,lon=".$obj->coord->lat.",".$obj->coord->lon.
 	") - Condition: ".$obj->weather[0]->main.
 	" - ".$obj->weather[0]->description;
-$output.=". Temperature ".(-273.15+$obj->main->temp)."°C (".(-273.15+$obj->main->temp_min);
-$output.="°C to ".(-273.15+$obj->main->temp_max).") ";
+$celsius=(-273.15+$obj->main->temp);
+$farenheit=$celsius*9/5+32;
+$output.=sprintf(". Temperature %.1f°C/%.0f°F (",$celsius,$farenheit);
+$output.=sprintf("%.1f to %.1f°C) ",(-273.15+$obj->main->temp_min),(-273.15+$obj->main->temp_max));
 $output.="Wind: ".round(1.609344*$obj->wind);
 $output.="km/h Humidity:".$obj->main->humidity."% pressure at sea level:";
 $output.=$obj->main->pressure."hPa Visibility: ".($obj->visibility/1000)."km ";
