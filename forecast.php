@@ -1,7 +1,5 @@
 <?php
 
-$PREDICT_DAYS=5;
-
 class Prediction {
 	public $day='';
 	public $temp_c=0;
